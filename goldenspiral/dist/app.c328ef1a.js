@@ -3310,7 +3310,7 @@ var define;
 
 }(this));
 
-},{}],"../../../../.volta/tools/image/packages/parcel-bundler/lib/node_modules/parcel-bundler/node_modules/url/util.js":[function(require,module,exports) {
+},{}],"node_modules/url/util.js":[function(require,module,exports) {
 'use strict';
 
 module.exports = {
@@ -3508,7 +3508,7 @@ var objectKeys = Object.keys || function (obj) {
 
 exports.decode = exports.parse = require('./decode');
 exports.encode = exports.stringify = require('./encode');
-},{"./decode":"node_modules/querystring-es3/decode.js","./encode":"node_modules/querystring-es3/encode.js"}],"../../../../.volta/tools/image/packages/parcel-bundler/lib/node_modules/parcel-bundler/node_modules/url/url.js":[function(require,module,exports) {
+},{"./decode":"node_modules/querystring-es3/decode.js","./encode":"node_modules/querystring-es3/encode.js"}],"node_modules/url/url.js":[function(require,module,exports) {
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -4242,7 +4242,7 @@ Url.prototype.parseHost = function() {
   if (host) this.hostname = host;
 };
 
-},{"punycode":"node_modules/punycode/punycode.js","./util":"../../../../.volta/tools/image/packages/parcel-bundler/lib/node_modules/parcel-bundler/node_modules/url/util.js","querystring":"node_modules/querystring-es3/index.js"}],"node_modules/@pixi/constants/dist/esm/constants.js":[function(require,module,exports) {
+},{"punycode":"node_modules/punycode/punycode.js","./util":"node_modules/url/util.js","querystring":"node_modules/querystring-es3/index.js"}],"node_modules/@pixi/constants/dist/esm/constants.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -6216,7 +6216,7 @@ function getResolutionOfUrl(url, defaultValue) {
 
   return defaultValue !== undefined ? defaultValue : 1;
 }
-},{"@pixi/settings":"node_modules/@pixi/settings/dist/esm/settings.js","eventemitter3":"node_modules/eventemitter3/index.js","earcut":"node_modules/earcut/src/earcut.js","url":"../../../../.volta/tools/image/packages/parcel-bundler/lib/node_modules/parcel-bundler/node_modules/url/url.js","@pixi/constants":"node_modules/@pixi/constants/dist/esm/constants.js"}],"node_modules/@pixi/math/dist/esm/math.js":[function(require,module,exports) {
+},{"@pixi/settings":"node_modules/@pixi/settings/dist/esm/settings.js","eventemitter3":"node_modules/eventemitter3/index.js","earcut":"node_modules/earcut/src/earcut.js","url":"node_modules/url/url.js","@pixi/constants":"node_modules/@pixi/constants/dist/esm/constants.js"}],"node_modules/@pixi/math/dist/esm/math.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -49417,10 +49417,13 @@ var Sketch = /*#__PURE__*/function () {
     this.width = window.innerWidth;
     this.height = window.innerHeight;
     this.app = new PIXI.Application({
-      backgroundColor: 0xffffff,
-      resolution: window.devicePixelRatio || 1,
+      width: this.width,
+      height: this.height,
+      antialias: true,
+      resolution: window.devicePixelRatio > 1 ? 2 : 1,
+      autoDensity: true,
       resizeTo: window,
-      autoResize: true
+      backgroundColor: 0xffffff
     });
     this.app.stage.interactive = true;
     document.body.appendChild(this.app.view);
@@ -49642,7 +49645,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58874" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59963" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

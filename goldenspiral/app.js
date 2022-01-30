@@ -18,10 +18,13 @@ class Sketch {
     this.width = window.innerWidth;
     this.height = window.innerHeight;
     this.app = new PIXI.Application({
-        backgroundColor: 0xffffff,
-        resolution: window.devicePixelRatio || 1,
+        width: this.width,
+        height: this.height,
+        antialias: true,
+        resolution: (window.devicePixelRatio > 1) ? 2 : 1,
+        autoDensity: true,
         resizeTo: window,
-        autoResize: true,
+        backgroundColor: 0xffffff,
     });
     this.app.stage.interactive = true;
     document.body.appendChild(this.app.view);
